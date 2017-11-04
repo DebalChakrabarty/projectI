@@ -2,4 +2,4 @@
 
 4th year project 
 
-Topic : object detection
+Topic : object detection and tracking using MATLAB
