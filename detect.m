@@ -32,18 +32,10 @@ for i = 1:150
     imwrite(result,[int2str(i),'.jpg']);
 end
 
-
-workingDir='I:\Matlab2017latest\bin'
-outputVideo = VideoWriter(fullfile(workingDir,'shuttle_out.avi'));
-outputVideo.FrameRate = videoReader.FrameRate;
-open(outputVideo)
-
-
-for ii = 1:150
-   img = imread([int2str(ii),'.jpg']);
-   writeVideo(outputVideo,img)
+video = VideoWriter('output.mp4'); %create the video object
+open(video); %open the file for writing
+for ii=1:150 %where N is the number of images
+    I = imread(strcat(int2str(ii),'.jpg')); %read the next image
+    writeVideo(video,I); %write the image to file
 end
-
-close(outputVideo)
-
-
+close(video); %close the file
