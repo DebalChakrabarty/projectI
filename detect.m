@@ -2,8 +2,8 @@ foregroundDetector = vision.ForegroundDetector('NumGaussians', 3, ...
     'NumTrainingFrames', 50);
 
 videoReader = vision.VideoFileReader('bouncingball.mp4');
-videoObj = VideoReader('bouncingball.mp4');
-
+vidObj = VideoReader('bouncingball.mp4');
+disp(vidObj.NumberOfFrames);
 for i = 1:vidObj.NumberOfFrames
     frame = step(videoReader); % read the next video frame
     foreground = step(foregroundDetector, frame);
@@ -35,7 +35,7 @@ end
 
 video = VideoWriter('output.mp4'); %create the video object
 open(video); %open the file for writing
-for ii=1:150 %where N is the number of images
+for ii=1:vidObj.NumberOfFrames %where N is the number of images
     I = imread(strcat(int2str(ii),'.jpg')); %read the next image
     writeVideo(video,I); %write the image to file
 end
